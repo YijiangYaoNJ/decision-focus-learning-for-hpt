@@ -1,0 +1,75 @@
+{
+  "feeder": "ieee123",
+  "service_areas": "configs/ieee123_service_areas.json",
+  "hpt_count": 6,
+  "phases": 3,
+  "controls_per_phase": 3,
+  "coordination_seconds": 5,
+  "window_seconds": 5400,
+  "manifest": "data/trajectories/manifest.csv",
+  "date_ranges": {
+    "train": [
+      [
+        20100401,
+        20100422
+      ],
+      [
+        20100501,
+        20100516
+      ]
+    ],
+    "validation": [
+      [
+        20100517,
+        20100523
+      ]
+    ],
+    "test_may": [
+      [
+        20100524,
+        20100531
+      ]
+    ],
+    "test_september": [
+      [
+        20100901,
+        20100930
+      ]
+    ]
+  },
+  "arms": [
+    "frozen",
+    "mse",
+    "joint"
+  ],
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "train_cycles": 78694,
+  "batch_size": 8,
+  "supervised_batch_size": 128,
+  "optimizer": {
+    "actor_lr": 0.0005,
+    "forecast_lr": 0.00015,
+    "clip_norm": 3
+  },
+  "loss": {
+    "risk_weight": 4,
+    "mse_weight": 10,
+    "risk_coefficients": [
+      0.1,
+      50,
+      0.2,
+      20
+    ]
+  },
+  "selection": {
+    "min_epochs": 2,
+    "max_epochs": 4,
+    "min_improvement": 0.000001,
+    "metric": "date_balanced_trade",
+    "tie": "earliest"
+  }
+}

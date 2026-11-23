@@ -3,3 +3,6 @@ __pycache__/
 .venv/
 work/
 .pytest_cache/
+
+runs/
+.ruff_cache/
