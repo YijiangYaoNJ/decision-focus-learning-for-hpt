@@ -4,6 +4,29 @@ Can a five-second solar forecast improve voltage control when the forecast model
 
 **Main finding.** On 30 September dates, joint decision-focused learning (DFL) saved 0.313 kWh and reduced voltage violations by 100.3 seconds per 90-minute window relative to continuing mean squared error (MSE) training. Compared with freezing the forecaster, joint DFL used 0.103 kWh more per window. These comparisons describe the selected operating points. Energy savings at matched voltage risk remain an open question.
 
+## Follow a decision through the system
+
+```mermaid
+flowchart LR
+    H[Six-site PV history] --> F[Five-second forecast]
+    F --> A[54 HPT control values]
+    G[Feeder and previous device state] --> A
+    A --> S[Common AC check and timed issue]
+    S --> R[One-second physical replay]
+    R --> M[Energy loss, voltage and overload]
+    M -. offline feedback .-> A
+    A -. joint DFL gradient .-> F
+```
+
+| Start here | Location |
+| --- | --- |
+| Configure the published experiment | [IEEE123 experiment JSON](configs/ieee123.json) |
+| Read the six functional modules and extension interfaces | [Architecture walkthrough](docs/architecture.md) · [source](src/hpt) |
+| Find inputs, models and outputs | [Data](data) · [selected checkpoints](checkpoints/selected) · [reference results](results/reference) |
+| Check the engineering migration against the original release | [Validation report](docs/migration.md) · [v0.1.0](https://github.com/YijiangYaoNJ/decision-focus-learning-for-hpt/tree/v0.1.0) |
+
+`run.py` is the common entry point. `verify` reproduces tables from recorded tests, `replay` runs a selected controller against the AC model, and `train` launches the paired CUDA experiment. Each command writes new outputs under `runs/`.
+
 ## Reproduce the results
 
 Use Python 3.11 or 3.12. From the repository root:
@@ -15,7 +38,7 @@ python -m pip install -r requirements.txt
 python run.py verify
 ```
 
-On Windows, activate the environment with `.venv\Scripts\Activate.ps1`. Verification only needs NumPy and pandas. It checks the published artifact hashes, verifies the validation-based checkpoint choices, matches each test record to its expected window and recomputes the ten summary and paired-difference tables in `work/tables/`. The reference tables remain available in the [published run](hpt_project/runs/ieee123_expanded_cuda_v1/).
+On Windows, activate the environment with `.venv\Scripts\Activate.ps1`. Verification only needs NumPy and pandas. It checks the published artifact hashes, verifies the validation-based checkpoint choices, matches each test record to its expected window and recomputes the ten summary and paired-difference tables in `runs/tables/`. The reference tables remain available in the [published run](results/reference/).
 
 **Replay a selected model.** Install PyTorch in the same environment. The original training used PyTorch 2.3.1 with CUDA 12.1. For CPU replay:
 
@@ -33,7 +56,7 @@ python -m pip install torch==2.3.1 --index-url https://download.pytorch.org/whl/
 python run.py train --gpus 0 1 2
 ```
 
-Pass the CUDA device indices visible to your process. The launcher assigns devices by seed and runs the three arms for each seed concurrently. One GPU can be specified if it has sufficient memory. This command writes to `work/retrain/` and summarizes newly generated results under `work/retrained_tables/`. Starting from an empty work directory reproduces training from the supplied initialization. Reusing the directory resumes completed epoch checkpoints. The reference run took approximately 25 h 16 min including validation and testing on three RTX 3090s, with AC feasibility checks and timed deployment on CPU.
+Pass the CUDA device indices visible to your process. The launcher assigns devices by seed and runs the three arms for each seed concurrently. One GPU can be specified if it has sufficient memory. This command writes to `runs/retrain/` and summarizes newly generated results under `runs/retrained_tables/`. Starting from an empty work directory reproduces training from the supplied initialization. Reusing the directory resumes completed epoch checkpoints. The reference run took approximately 25 h 16 min including validation and testing on three RTX 3090s, with AC feasibility checks and timed deployment on CPU.
 
 ## What is compared?
 
@@ -60,16 +83,7 @@ One epoch visits 78,694 five-second periods across 35 training dates: 5,254 lega
 | September | Continue MSE | 74.980 | 538.5 | 208.1 |
 | September | Joint DFL | 74.668 | 438.2 | 189.3 |
 
-The September date-block 95% intervals for joint minus MSE are −0.386 to −0.245 kWh and −157.1 to −43.6 voltage-violation seconds. These intervals condition on the three trained seeds. All three reduced voltage-violation time; two of three reduced energy loss. The interval for overload duration includes zero. [Detailed results and limitations (Chinese)](hpt_project/runs/ieee123_expanded_cuda_v1/FINAL_RESULTS.md)
-
-## Repository guide
-
-- [Training loop](hpt_project/tools/ieee123_expanded_train.py) and [trajectory loader](hpt_project/tools/ieee123_expanded_data.py)
-- [HPT steady-state model](hpt_project/tools/ieee123_six.py), [service-area configuration](hpt_project/configs/ieee123_service_areas.json), [runtime action checks](hpt_project/tools/ieee123_direct_confirm.py)
-- [Execution-cost derivative](hpt_project/tools/ieee123_full_coverage.py) and [proposal-safety derivative](hpt_project/tools/ieee123_proposal_train.py)
-- [Data split and provenance](hpt_project/runs/ieee123_expanded_trajectories_v1/REPORT.md), [locked manifest](hpt_project/runs/ieee123_expanded_trajectories_v1/manifest.csv) and [data attribution](DATA_SOURCES.md)
-
-The reproducible entry points above start from the published feeder snapshot, processed data and initial weights. Some supporting modules also contain historical preparation routines that used earlier experiment directories. The release covers the expanded training and test comparison.
+The September date-block 95% intervals for joint minus MSE are −0.386 to −0.245 kWh and −157.1 to −43.6 voltage-violation seconds. These intervals condition on the three trained seeds. All three reduced voltage-violation time; two of three reduced energy loss. The interval for overload duration includes zero. [Detailed results and limitations (Chinese)](results/reference/FINAL_RESULTS.md)
 
 ## License
 
