@@ -1,0 +1,12 @@
+{
+  "unique_timestamp_count": 181294,
+  "disjoint_splits": true,
+  "distinct_legacy_training": 5254,
+  "epoch_loader_training_cycles": 78694,
+  "smoke_update_grad_norm": {
+    "action": 0.15470752120018005,
+    "forecast": 0.007907235994935036
+  },
+  "cross_slot_error_kw": 8.526512829121202e-14,
+  "test_used_for_model_updates": false
+}

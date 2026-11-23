@@ -1,0 +1,18 @@
+{
+  "site_lines": ["l13", "l114", "l116", "l67", "l68", "l77"],
+  "series_limit_pu": 0.1,
+  "port_fraction": 0.1,
+  "winding_r_pu": 0.005,
+  "winding_x_pu": 0.03,
+  "design_reserve": 1.25,
+  "phase_rating_increment_kva": 25,
+  "voltage_band_pu": [0.95, 1.05],
+  "high_pv": [
+    {"bus":"13","kva":300,"profile":"7"},
+    {"bus":"18","kva":300,"profile":"29"},
+    {"bus":"60","kva":500,"profile":"63"},
+    {"bus":"151","kva":500,"profile":"49"},
+    {"bus":"250","kva":500,"profile":"55"},
+    {"bus":"300","kva":500,"profile":"113"}
+  ]
+}

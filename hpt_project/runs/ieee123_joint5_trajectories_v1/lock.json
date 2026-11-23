@@ -1,0 +1,17 @@
+{
+  "april_sha": "56304b2dbfcbaf7e0a41418c6a448345b7785c160bc3c42e380a3bfb93730e4e",
+  "june_sha": "45902d6f92c3aa523d6eff7144398d431f63956a69eca581a03ace520df552d6",
+  "eligible_june_dates": 30,
+  "predictors": {
+    "runs\\cross_joint_v1\\123\\11\\initial.pt": "facf8379cea2a5c02dc320b905dab1923502fa0d668bfd6af91483e17c900774",
+    "runs\\joint_feeders_v2\\123\\11_joint_mse_selected.pt": "2555e1ce96d43603b3923b6000c5b66b38200c0d8b166944132c6f51e5c3f752"
+  },
+  "original_cases": "12ec470c3387f40df60f6e0acc3bc0ab41415629af7cfc262aee41f9ff8a8784",
+  "source_url": "https://midcdmz.nlr.gov/oahu_archive/rawdata/Oahu_GHI/201006.zip",
+  "test_selection": "one random complete window per available date; one date per chronological decile",
+  "files": {
+    "cases.npz": "01b6bff6b51bcb51366495e04a0bb4e5bac387a4fcd2e5610556df889be11981",
+    "june.npz": "900749ad0dff196c0bfa59eefff05b0ba9b787d02970d6b0a390c5322cbcf80e",
+    "manifest.csv": "7603b305db6c01fbf2b2a52920be04484837844a7976571b91deeda41c6a1747"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "source_123": "https://doi.org/10.25984/2228282",
+  "source_13": "https://ewh.ieee.org/soc/pes/dsacom/testfeeders/testfeeders.pdf",
+  "source_partial_converter": "https://doi.org/10.1109/TSG.2024.3508252",
+  "extensions": {"kva_3phase":500,"kv_high":4.16,"kv_low":0.48,"r_pct_per_winding":0.55,"xhl_pct":2.0},
+  "port_fraction":0.10, "tertiary_x_fraction_of_main_impedance":0.10,
+  "sites":[
+    {"element":"xfm1","mv":"61s","lv":"610","existing":true,"loads":["s65a","s65b"]},
+    {"element":"area18","mv":"18","lv":"lv18","existing":false,"loads":["s19a","s20a"]},
+    {"element":"area49","mv":"49","lv":"lv49","existing":false,"loads":["s49a","s49b","s49c"]},
+    {"element":"area60","mv":"60","lv":"lv60","existing":false,"loads":["s58b","s59b","s60a","s62c"]},
+    {"element":"area76","mv":"76","lv":"lv76","existing":false,"loads":["s76a","s76b","s76c"]},
+    {"element":"area300","mv":"300","lv":"lv300","existing":false,"loads":["s106b","s107b","s109a","s111a","s112a"]}
+  ]
+}

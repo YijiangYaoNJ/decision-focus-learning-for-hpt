@@ -1,0 +1,52 @@
+{
+  "seed": 20261122,
+  "seconds": 5400,
+  "cycle_seconds": 5,
+  "source": {
+    "oahu_201004.zip": "56304b2dbfcbaf7e0a41418c6a448345b7785c160bc3c42e380a3bfb93730e4e",
+    "oahu_201005.zip": "018518b68d185f105eced726d4257c5b2b251a1577460e8b18288bf23fbafdf3",
+    "oahu_201009.zip": "aa92ba32f887fa78982cb09523a15d2db62d3c3e66442a94b76fdd1a121d7c16"
+  },
+  "slow_forecaster": {
+    "runs\\cross_joint_v1\\123\\11\\initial.pt": "facf8379cea2a5c02dc320b905dab1923502fa0d668bfd6af91483e17c900774",
+    "runs\\joint_feeders_v2\\123\\11_joint_mse_selected.pt": "2555e1ce96d43603b3923b6000c5b66b38200c0d8b166944132c6f51e5c3f752"
+  },
+  "feeder": "a3882be704bc7544d4fa735fe52f6b73f6e9509f93a307566cb5da5a41687b46",
+  "legacy_sha": "01b6bff6b51bcb51366495e04a0bb4e5bac387a4fcd2e5610556df889be11981",
+  "legacy_count": 5254,
+  "legacy_dates": [
+    20100401,
+    20100402,
+    20100403,
+    20100404,
+    20100405,
+    20100406,
+    20100407,
+    20100408,
+    20100409,
+    20100410,
+    20100411,
+    20100412,
+    20100413,
+    20100414,
+    20100415,
+    20100416,
+    20100417,
+    20100418,
+    20100419,
+    20100420,
+    20100421,
+    20100422
+  ],
+  "legacy_protocol": "Original 5254 train indices only. Previous April validation and test records excluded.",
+  "extra_protocol": "One uniform complete 90-minute interval per available date and time band, no replacement. Whole dates split. No selection by controller outcomes. Test September excludes prior ten-minute window plus historical feature support.",
+  "files": {
+    "test_may.npz": "f84c1cd2c81b2e0970d6b612ed4286680e76041235031172b30445d62d644ce4",
+    "test_september.npz": "106373f4601dc5f73d2bfdb1feb9493796951e306b01419cdc70ec43e630d7e6",
+    "train.npz": "479f254c1eaf0bb95f2a06fe2c6aeea8d36dc483c32e79609180b8d75e3babd3",
+    "validation.npz": "099de045cb666a4179d70b663ad0b7c7faa2a5455e47b53a92df03217a77eb76",
+    "manifest.csv": "a055bc39c313f4ccbad134604f49450aa44e895cc9b690a74ea64922dd81ad92",
+    "coverage.csv": "b62d6fae405fbaad501ebf7e229fe412e8420192004d6fad823cfa7e07ebae95",
+    "prior_evaluation_dates.csv": "5a8d900373e03055e609523c39f72cb8c73a321c7cca0000cfae0ec476956370"
+  }
+}

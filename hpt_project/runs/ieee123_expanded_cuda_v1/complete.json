@@ -1,0 +1,7 @@
+{
+  "paired_runs": 9,
+  "test_splits": [
+    "test_may",
+    "test_september"
+  ]
+}

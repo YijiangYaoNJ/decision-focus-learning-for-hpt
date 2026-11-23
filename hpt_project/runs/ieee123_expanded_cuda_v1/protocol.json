@@ -1,0 +1,18 @@
+{
+  "dataset_sha": "a1e0880ef157fba6ad463d819e19f0b5f5e8cad03b429e855425c1f9eaa89bf3",
+  "arms": [
+    "frozen",
+    "mse",
+    "joint"
+  ],
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "weight": 4.0,
+  "batch": 8,
+  "epochs": "2 to 4 shared per seed. Stop after an epoch with no new validation best in any arm (1e-6).",
+  "selector": "Lowest date-balanced validation trade, including initialization; earliest tie.",
+  "deployment": "Identical timed CPU action issue and AC replay, training networks on CUDA."
+}

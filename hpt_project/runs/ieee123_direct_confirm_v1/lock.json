@@ -1,0 +1,49 @@
+{
+  "excluded_august": [
+    20100801,
+    20100806,
+    20100809,
+    20100812,
+    20100813,
+    20100816,
+    20100820,
+    20100822,
+    20100825,
+    20100826,
+    20100828,
+    20100831
+  ],
+  "dates": [
+    20100802,
+    20100805,
+    20100807,
+    20100810,
+    20100815,
+    20100817,
+    20100821,
+    20100823,
+    20100824,
+    20100827,
+    20100829,
+    20100830
+  ],
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "archive": "a41c481f593fd843dd16bf4cdfbbc9d7fd9f43aebeb315a070b143e29d536ade",
+  "feeder": "a3882be704bc7544d4fa735fe52f6b73f6e9509f93a307566cb5da5a41687b46",
+  "manifest": "a3a2db23c0c5cd8e78fa3b97f7e74a154a2564e68c66fcaa56a6481007d1f8f2",
+  "windows": "24ac0a7d7d766ffb715e7811e99f911ff1c350860adcd34854ac8f5487f409c5",
+  "train": "April through 22nd; April validation thereafter; paired step-0 risk caps; patience 40, max 120",
+  "arms": [
+    "frozen",
+    "mse",
+    "joint",
+    "qp",
+    "acopf"
+  ],
+  "primary": "joint minus mse. Average seeds within date first; date bootstrap 95% intervals. Require no increase in voltage/overload duration or peak, and lower energy.",
+  "rules": "Direct issuance only, common frozen seed-11 screening path, rejection or 5 s timeout holds last. Measured compute delay included. AC-OPF uses a mean forecast snapshot; six-frame acceptance for all arms."
+}

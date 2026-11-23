@@ -1,0 +1,5 @@
+split,extended_dates,windows,spatial_cycles,opposing_cycles,steady_cycles,hours,new_cycles,unique_dates,total_cycles
+test_may,4,11,5989,3098,4557,16.5,11880,4,11880
+test_september,30,75,23439,10886,46626,112.5,81000,30,81000
+train,30,68,22169,11042,39907,102.0,73440,35,78694
+validation,4,9,4450,2492,4011,13.5,9720,4,9720

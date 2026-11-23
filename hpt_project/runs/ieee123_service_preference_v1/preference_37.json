@@ -1,0 +1,1 @@
+{"seed": 37, "selected": 15, "stopped": 75, "weights_sha256": "13c7acd47251095cb42f2309a321fde4d68d02f5861b3f046efe9e6fc91831e4", "april_sha256": "12ec470c3387f40df60f6e0acc3bc0ab41415629af7cfc262aee41f9ff8a8784", "train": 94, "validation": 36, "eligible_teacher_labels": null, "caps": [0.25, 0.1, 0.025], "tail_targets": [0.012, 0.006, 0.002]}

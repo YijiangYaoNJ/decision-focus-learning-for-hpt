@@ -1,0 +1,6 @@
+# Experiment environment. Install a platform-appropriate torch build separately.
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.16.3
+osqp==1.0.4
+threadpoolctl==3.5.0
